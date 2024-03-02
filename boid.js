@@ -1,14 +1,17 @@
 const flock = [];
 
-let alignSlider, cohesionSlider, separationSlider;
+let alignSlider, cohesionSlider, separationSlider, maxForceSlider, maxSpeedSlider;
+
 
 function setup()
 {
-    createCanvas(1500, 700);
     alignSlider = createSlider(0, 10, 2, 0.1);
     cohesionSlider = createSlider(0, 10, 2, 0.1);
-    separationSlider = createSlider(0, 10, 2, 0.1);;
-    for (let i = 0; i < 800; i++) {
+    separationSlider = createSlider(0, 10, 2, 0.1);
+    maxForceSlider = createSlider(0, 10, 2, 0.1);
+    maxSpeedSlider = createSlider(0, 10, 2, 0.1);
+    createCanvas(1500, 700);
+    for (let i = 0; i < 600; i++) {
         flock.push(new Boid());
     }
 }
@@ -31,14 +34,17 @@ class Boid
         this.position = createVector(random(0, width), random(0, height));
         this.velocity.setMag(random(1, 5));
         this.acceleration = createVector();
-        this.maxForce = 0.1;
-        this.maxSpeed = 4;
+        this.maxForce = 0.5*maxForceSlider.value();
+        this.maxSpeed = 3*maxSpeedSlider.value();
     }
 
     show() {
-        strokeWeight(5);
+        strokeWeight(2);
+        stroke(255,0,0);
+        line(this.position.x, this.position.y, (this.position.x+this.velocity.x), (this.position.y+this.velocity.y));
+        strokeWeight(8);
         stroke(255);
-        point(this.position.x, this.position.y)
+        point(this.position.x, this.position.y);
     }
 
     update()
