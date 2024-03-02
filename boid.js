@@ -8,7 +8,7 @@ function setup()
     alignSlider = createSlider(0, 10, 2, 0.1);
     cohesionSlider = createSlider(0, 10, 2, 0.1);
     separationSlider = createSlider(0, 10, 2, 0.1);;
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 800; i++) {
         flock.push(new Boid());
     }
 }
