@@ -41,6 +41,9 @@ class Boid
     show() {
         strokeWeight(2);
         stroke(255,0,0);
+        line(this.position.x, this.position.y, (this.position.x+this.velocity.x*3), (this.position.y+this.velocity.y*3));
+        stroke(0,255,0);
+        line(this.position.x-this.velocity.x*2, this.position.y-this.velocity.y*2, this.position.x, this.position.y);
         line(this.position.x, this.position.y, (this.position.x+this.velocity.x), (this.position.y+this.velocity.y));
         strokeWeight(8);
         stroke(255);
